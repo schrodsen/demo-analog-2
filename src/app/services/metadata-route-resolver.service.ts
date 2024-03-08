@@ -7,14 +7,7 @@ import { lastValueFrom, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators'
 import { PlatformService } from '../utils/platform.service';
 
-export const metaResolver: ResolveFn<MetaTag[]> = async (route, state) => {
-  const platform = inject(PlatformService);
-  const resolverService = inject(MetadataRouteResolverService);
 
-  return (platform.isServer)
-   ? await resolverService.getMetaByUrl(state.url)
-   : [];
-};
 
 @Injectable({
   providedIn: 'root'
@@ -29,15 +22,12 @@ export class MetadataRouteResolverService {
   async getMetaByUrl(url: string) : Promise<MetaTag[]> {
 
     const apiUrl = `https://vhdev.proxy.beeceptor.com/seo?route=${url}`;
-    console.log('url to mock api', apiUrl);
     const metadata = await lastValueFrom(this.httpClient.get<MetaDefinition[]>(apiUrl)
       .pipe(
         map((value) => {
-          console.log('seo',value);
           return this.generateMeta(value);
         }),
-        catchError((err) => {
-          console.log('seo', err);
+        catchError(() => {
           const emptyArray: MetaTag[] = [];
           return of(emptyArray);
         })
