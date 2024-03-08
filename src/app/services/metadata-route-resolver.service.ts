@@ -4,10 +4,15 @@ import { ResolveFn } from '@angular/router';
 import { MetaDefinition } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 import { catchError, lastValueFrom, of } from 'rxjs';
+import { PlatformService } from '../utils/platform.service';
 
 export const metaResolver: ResolveFn<MetaTag[]> = async (route, state) => {
+  const platform = inject(PlatformService);
   const resolverService = inject(MetadataRouteResolverService);
-  return await resolverService.getMetaByUrl(state.url);
+
+  return (platform.isServer)
+   ? await resolverService.getMetaByUrl(state.url)
+   : [];
 };
 
 @Injectable({
@@ -15,8 +20,8 @@ export const metaResolver: ResolveFn<MetaTag[]> = async (route, state) => {
 })
 export class MetadataRouteResolverService {
 
+  platform = inject(PlatformService);
   httpClient = inject(HttpClient);
-  //apiService = inject(MetaFakerService);
 
   constructor() { }
 

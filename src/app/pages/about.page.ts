@@ -6,19 +6,23 @@ import { Meta, MetaDefinition } from '@angular/platform-browser';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-const x : ResolveFn<MetaTag[]> = async (route, state) =>
-{
-  const url = '/';
-  const httpClient = inject(HttpClient);
-  const apiUrl = `http://localhost:5263/api/seo?route=${url}`;
-  const metadata = await lastValueFrom(httpClient.get<MetaDefinition[]>(apiUrl));
-  //const metadata = this.apiService.getMeta(url);
-  return generateMetaTags(metadata);
-}
-
 export const routeMeta: RouteMeta = {
-  meta: x
+  meta: metaResolver,
 };
+
+// const x : ResolveFn<MetaTag[]> = async (route, state) =>
+// {
+//   const url = '/';
+//   const httpClient = inject(HttpClient);
+//   const apiUrl = `http://localhost:5263/api/seo?route=${url}`;
+//   const metadata = await lastValueFrom(httpClient.get<MetaDefinition[]>(apiUrl));
+//   //const metadata = this.apiService.getMeta(url);
+//   return generateMetaTags(metadata);
+// }
+
+// export const routeMeta: RouteMeta = {
+//   meta: x
+// };
 
 @Component({
   selector: 'app-about',
