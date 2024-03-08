@@ -1,0 +1,42 @@
+.grid-container {
+  display: grid;
+  grid-template-rows: 110px 90px;
+  grid-template-columns: minmax(240px, 360px) auto minmax(200px, 320px);
+
+  grid-template-areas:
+    "logo nav-1 contact"
+    "search nav-2 contact";
+
+  width: 100%;
+}
+
+.area-logo {
+  grid-area: logo;
+  background-color: violet;
+}
+
+.area-search {
+  grid-area: search;
+  background-color: brown;
+}
+
+.area-nav-main {
+  grid-area: nav-1;
+  background-color: red;
+}
+
+.area-nav-travel {
+  grid-area: nav-2;
+  background-color: green;
+}
+
+.area-contact {
+  grid-area: contact;
+  background-color: orange;
+}
+
+.area-contact > p {
+  color: yellow;
+  font-size: 18px;
+}
+

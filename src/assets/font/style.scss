@@ -1,0 +1,104 @@
+@import "variables";
+
+@font-face {
+  font-family: '#{$icomoon-font-family}';
+  src:
+    url('/font/#{$icomoon-font-family}.woff2?oiuljs') format('woff2'),
+    url('/font/#{$icomoon-font-family}.ttf?oiuljs') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+i {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: '#{$icomoon-font-family}' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mars-icon-plane {
+  &:before {
+    content: $mars-icon-plane;
+  }
+}
+.mars-icon-ship {
+  &:before {
+    content: $mars-icon-ship;
+  }
+}
+.mars-icon-car {
+  &:before {
+    content: $mars-icon-car;
+  }
+}
+.mars-icon-print-preview {
+  &:before {
+    content: $mars-icon-print-preview;
+  }
+}
+.mars-icon-magnifying-glass {
+  &:before {
+    content: $mars-icon-magnifying-glass;
+  }
+}
+.mars-icon-facebook {
+  &:before {
+    content: $mars-icon-facebook;
+  }
+}
+.mars-icon-instagram {
+  &:before {
+    content: $mars-icon-instagram;
+  }
+}
+.mars-icon-tiktok {
+  &:before {
+    content: $mars-icon-tiktok;
+  }
+}
+.mars-icon-youtube {
+  &:before {
+    content: $mars-icon-youtube;
+  }
+}
+.mars-icon-telegram {
+  &:before {
+    content: $mars-icon-telegram;
+  }
+}
+.mars-icon-ranking-colored .path1 {
+  &:before {
+    content: $mars-icon-ranking-colored-path1;
+    color: rgb(251, 186, 0);
+  }
+}
+.mars-icon-ranking-colored .path2 {
+  &:before {
+    content: $mars-icon-ranking-colored-path2;
+    margin-left: -1em;
+    color: rgb(28, 32, 62);
+  }
+}
+.mars-icon-ranking .path1 {
+  &:before {
+    content: $mars-icon-ranking-path1;
+    color: rgb(230, 231, 238);
+  }
+}
+.mars-icon-ranking .path2 {
+  &:before {
+    content: $mars-icon-ranking-path2;
+    margin-left: -1em;
+    color: rgb(255, 255, 255);
+  }
+}
+
