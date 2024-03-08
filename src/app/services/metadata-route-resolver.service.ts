@@ -3,7 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
 import { MetaDefinition } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
-import { catchError, lastValueFrom, of } from 'rxjs';
+import { lastValueFrom, of } from 'rxjs';
+import { map, catchError } from 'rxjs/operators'
 import { PlatformService } from '../utils/platform.service';
 
 export const metaResolver: ResolveFn<MetaTag[]> = async (route, state) => {
@@ -28,15 +29,24 @@ export class MetadataRouteResolverService {
   async getMetaByUrl(url: string) : Promise<MetaTag[]> {
 
     const apiUrl = `https://vhdev.proxy.beeceptor.com/seo?route=${url}`;
+    console.log('url to mock api', apiUrl);
     const metadata = await lastValueFrom(this.httpClient.get<MetaDefinition[]>(apiUrl)
       .pipe(
-        catchError(() => {
-          return of([]);
+        map((value) => {
+          console.log('seo',value);
+          return this.generateMeta(value);
+        }),
+        catchError((err) => {
+          console.log('seo', err);
+          const emptyArray: MetaTag[] = [];
+          return of(emptyArray);
         })
       )
     );
+
+    return metadata;
     //const metadata = this.apiService.getMeta(url);
-    return this.generateMeta(metadata);
+    //return this.generateMeta(metadata);
   }
 
   private generateMeta(metaTags: MetaDefinition[]) : MetaTag[] {
