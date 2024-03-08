@@ -13,14 +13,7 @@ export default defineConfig(({ mode }) => ({
     mainFields: ['module'],
   },
   plugins: [
-    analog({
-      nitro: {
-        output: {
-          serverDir: '{{ rootDir }}/.netlify/functions-internal',
-          publicDir: '../../dist/analog/public',
-        },
-      },
-    }),
+    analog()
   ],
   test: {
     globals: true,
