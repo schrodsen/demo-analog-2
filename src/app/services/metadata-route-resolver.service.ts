@@ -22,7 +22,8 @@ export class MetadataRouteResolverService {
 
   async getMetaByUrl(url: string) : Promise<MetaTag[]> {
 
-    const apiUrl = `http://localhost:5263/api/seo?route=${url}`;
+    url = '/about';
+    const apiUrl = `https://vhdev.proxy.beeceptor.com/seo?route=${url}`;
     const metadata = await lastValueFrom(this.httpClient.get<MetaDefinition[]>(apiUrl));
     //const metadata = this.apiService.getMeta(url);
     return this.generateMeta(metadata);
