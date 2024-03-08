@@ -1,14 +1,14 @@
 import { MetaTag, RouteMeta } from '@analogjs/router';
 import { Component, inject } from '@angular/core';
 import { RouterLink, ResolveFn } from '@angular/router';
-import { generateMetaTags, metaResolver } from './../services/metadata-route-resolver.service';
+import { generateMetaTags } from './../services/metadata-route-resolver.service';
 import { Meta, MetaDefinition } from '@angular/platform-browser';
 import { lastValueFrom } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-export const routeMeta: RouteMeta = {
-  meta: metaResolver,
-};
+// export const routeMeta: RouteMeta = {
+//   meta: metaResolver,
+// };
 
 // const x : ResolveFn<MetaTag[]> = async (route, state) =>
 // {
