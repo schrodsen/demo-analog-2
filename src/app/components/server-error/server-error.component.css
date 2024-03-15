@@ -26,7 +26,7 @@
   padding-right: 15px
 }
 
-.notfound .notfound-404 {
+.notfound .notfound-500 {
   position: absolute;
   height: 100px;
   top: 0;
@@ -37,7 +37,7 @@
   z-index: -1
 }
 
-.notfound .notfound-404 h1 {
+.notfound .notfound-500 h1 {
   font-family: maven pro,sans-serif;
   color: #ececec;
   font-weight: 900;
@@ -92,7 +92,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .notfound .notfound-404 h1 {
+  .notfound .notfound-500 h1 {
       font-size:162px
   }
 

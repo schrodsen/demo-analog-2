@@ -3,8 +3,8 @@
 @font-face {
   font-family: '#{$icomoon-font-family}';
   src:
-    url('/font/#{$icomoon-font-family}.woff2?oiuljs') format('woff2'),
-    url('/font/#{$icomoon-font-family}.ttf?oiuljs') format('truetype');
+    url('/font/#{$icomoon-font-family}.woff2?kytgge') format('woff2'),
+    url('/font/#{$icomoon-font-family}.ttf?kytgge') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,77 +27,102 @@ i {
 
 .mars-icon-plane {
   &:before {
-    content: $mars-icon-plane;
+    content: $mars-icon-plane; 
   }
 }
 .mars-icon-ship {
   &:before {
-    content: $mars-icon-ship;
+    content: $mars-icon-ship; 
   }
 }
 .mars-icon-car {
   &:before {
-    content: $mars-icon-car;
+    content: $mars-icon-car; 
   }
 }
-.mars-icon-print-preview {
+.mars-icon-star {
   &:before {
-    content: $mars-icon-print-preview;
+    content: $mars-icon-star; 
+  }
+}
+.mars-icon-alpaca {
+  &:before {
+    content: $mars-icon-alpaca; 
+  }
+}
+.mars-icon-search-plus {
+  &:before {
+    content: $mars-icon-search-plus; 
+  }
+}
+.mars-icon-search-minus {
+  &:before {
+    content: $mars-icon-search-minus; 
   }
 }
 .mars-icon-magnifying-glass {
   &:before {
-    content: $mars-icon-magnifying-glass;
+    content: $mars-icon-magnifying-glass; 
+  }
+}
+.mars-icon-arrow-left {
+  &:before {
+    content: $mars-icon-arrow-left; 
+  }
+}
+.mars-icon-arrow-right {
+  &:before {
+    content: $mars-icon-arrow-right; 
   }
 }
 .mars-icon-facebook {
   &:before {
-    content: $mars-icon-facebook;
+    content: $mars-icon-facebook; 
   }
 }
 .mars-icon-instagram {
   &:before {
-    content: $mars-icon-instagram;
+    content: $mars-icon-instagram; 
   }
 }
 .mars-icon-tiktok {
   &:before {
-    content: $mars-icon-tiktok;
+    content: $mars-icon-tiktok; 
   }
 }
 .mars-icon-youtube {
   &:before {
-    content: $mars-icon-youtube;
+    content: $mars-icon-youtube; 
   }
 }
 .mars-icon-telegram {
   &:before {
-    content: $mars-icon-telegram;
+    content: $mars-icon-telegram; 
   }
 }
 .mars-icon-ranking-colored .path1 {
   &:before {
-    content: $mars-icon-ranking-colored-path1;
+    content: $mars-icon-ranking-colored-path1;  
     color: rgb(251, 186, 0);
   }
 }
 .mars-icon-ranking-colored .path2 {
   &:before {
-    content: $mars-icon-ranking-colored-path2;
-    margin-left: -1em;
+    content: $mars-icon-ranking-colored-path2;  
+    margin-left: -1em;  
     color: rgb(28, 32, 62);
   }
 }
 .mars-icon-ranking .path1 {
   &:before {
-    content: $mars-icon-ranking-path1;
+    content: $mars-icon-ranking-path1;  
     color: rgb(230, 231, 238);
   }
 }
 .mars-icon-ranking .path2 {
   &:before {
-    content: $mars-icon-ranking-path2;
-    margin-left: -1em;
+    content: $mars-icon-ranking-path2;  
+    margin-left: -1em;  
     color: rgb(255, 255, 255);
   }
 }

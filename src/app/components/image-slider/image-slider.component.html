@@ -1,0 +1,26 @@
+<div class="slider-container">
+
+  <div id="carousel-image" class="carousel">
+
+    <div class="image-container">
+      <img [src]="(activeImg$ | async)?.url" class="d-block w-100" [alt]="(activeImg$ | async)?.alt" title="Product View">
+    </div>
+
+    <button title="prev" class="slider-button-prev" type="button" (click)="onPrevious()">
+      <i class="mars-icon-arrow-left"></i>
+    </button>
+
+    <button title="next" class="slider-button-next" type="button" (click)="onNext()">
+      <i class="mars-icon-arrow-right"></i>
+    </button>
+
+    <div class="selection-container">
+      @for (item of images; track item; let i =$index;){
+        <button  type="button" title="selection {{i}}" class="hit-box" (click)="onSelection(i)">
+        </button>
+      }
+    </div>
+
+  </div>
+
+</div>
