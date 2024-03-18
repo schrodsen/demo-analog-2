@@ -4,10 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { ImageSliderModel, ImageTagModel, ProductCodes } from './image-slider.model';
 import { HttpClient } from '@angular/common/http';
-import { toSignal } from '@angular/core/rxjs-interop';
-
-import { load } from './image-slider.server';
-import { injectLoad } from '@analogjs/router';
+import { DynamicComponent } from '../dynamic-template/dynamic-template.types';
 
 @Component({
   selector: 'image-slider',
@@ -19,12 +16,10 @@ import { injectLoad } from '@analogjs/router';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ImageSliderComponent implements OnInit {
+export class ImageSliderComponent implements OnInit, DynamicComponent {
 
   @Input() productCode: string = '';
   @Input() images: ImageTagModel[] = [];
-
-  //data = toSignal(injectLoad<typeof load>(), { requireSync: true });
 
   private httpClient = inject(HttpClient);
 
@@ -34,15 +29,10 @@ export class ImageSliderComponent implements OnInit {
   activeImg$ = this.activeImage as Observable<ImageTagModel | null>;
 
   constructor() {
-    console.log('ctor image slider');
-    this.getImages();
-    //console.log(this.data());
   }
 
   ngOnInit() {
-    console.log('ng onint image slider');
-    //console.log(this.data());
-   //this.activeImage.next(this.images[0]);
+    this.getImages();
   }
 
   onNext() {

@@ -1,12 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { FooterComponentModel, FooterService } from './footer.service';
+import { DynamicComponent } from '../dynamic-template/dynamic-template.types';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent implements DynamicComponent, OnInit {
 
   footerService = inject(FooterService);
 

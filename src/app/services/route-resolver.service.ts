@@ -31,8 +31,6 @@ export class RouteResolverService {
             dynamicPageModel.title = pageModel.title;
 
             for (let component of pageModel?.components) {
-              // if (component.componentName === 'image-slider')
-              //   continue;
               const componentType = await this.loadComponent(component.componentName);
               dynamicPageModel.components.push({
                 componentType: componentType
@@ -55,11 +53,6 @@ export class RouteResolverService {
         title: 'Server not available',
         components: [],
       }
-
-      const serverError = await import('../components/server-error/server-error.component');
-      dynamicPageModel.components.push({
-        componentType: serverError.ServerErrorComponent
-      });
 
       resolve(dynamicPageModel);
     }))

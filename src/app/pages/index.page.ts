@@ -1,9 +1,13 @@
-import { ChangeDetectorRef, Component, inject } from "@angular/core";
+import { PlatformService } from './../utils/platform.service';
+import { AfterViewInit, ChangeDetectorRef, Component, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { Title } from "@angular/platform-browser";
 import { Router } from "@angular/router";
 import { RouteResolverService } from "../services/route-resolver.service";
 import { DynamicComponentModel } from "../services/model/dynamic-component.model";
+import { ServerErrorComponent } from "../components/server-error/server-error.component";
+import { DynamicTemplateComponent } from '../components/dynamic-template/dynamic-template.component';
+import { ComponentTemplate } from '../components/dynamic-template/dynamic-template.types';
 
 @Component({
   selector: 'app-home',
@@ -14,13 +18,19 @@ import { DynamicComponentModel } from "../services/model/dynamic-component.model
         <ng-container *ngComponentOutlet="item.componentType" />
       }
     </div>
+    <!-- <p>
+      Huhu
+    </p>
+    <app-dynamic-template [components]="components"></app-dynamic-template> -->
   `,
   imports: [
     CommonModule,
+    DynamicTemplateComponent
   ],
 })
-export default class HomeComponent {
+export default class HomeComponent implements AfterViewInit {
 
+  platform = inject(PlatformService);
   detect = inject(ChangeDetectorRef);
   pageTitle = inject(Title);
   router = inject(Router);
@@ -28,6 +38,7 @@ export default class HomeComponent {
 
   //dynamicComponents$: Observable<DynamicComponentModel[]>;
   dynamicComponents: DynamicComponentModel[] = [];
+  components: ComponentTemplate[] = [];
 
   constructor() {
 
@@ -44,6 +55,21 @@ export default class HomeComponent {
     //     })
     //   );
 
+    // this.components.push({
+    //   name: 'header',
+    //   componentData: {}
+    // })
+
+    // this.components.push({
+    //   name: 'imageSlider',
+    //   componentData: {}
+    // })
+
+    // this.components.push({
+    //   name: 'footer',
+    //   componentData: {}
+    // })
+
     this.routeResolverService.getPageConfigurationByUrlNew(this.router.url)
     .subscribe({
       next: (pageModel) => {
@@ -51,5 +77,13 @@ export default class HomeComponent {
         this.dynamicComponents = pageModel.components;
       }
     });
+  }
+
+  ngAfterViewInit() {
+    // if (this.platform.isBrowser) {
+    //   if (this.dynamicComponents.length === 0) {
+    //     this.dynamicComponents = [{ componentType: ServerErrorComponent }];
+    //   }
+    // }
   }
 }

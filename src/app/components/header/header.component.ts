@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavMainComponent, NavMainItemModel } from '../nav-main/nav-main.component';
+import { DynamicComponent } from '../dynamic-template/dynamic-template.types';
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,7 @@ import { NavMainComponent, NavMainItemModel } from '../nav-main/nav-main.compone
     NavMainComponent,
   ]
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements DynamicComponent, OnInit {
 
 
   navBarMain: NavMainItemModel[] = [
